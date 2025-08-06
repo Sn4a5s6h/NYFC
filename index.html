@@ -86,7 +86,7 @@
     </audio>
 
     <script>
-      let timeLeft = 20;
+      let timeLeft = 3;
       const countdownEl = document.getElementById("countdown");
       const alarmSound = document.getElementById("alarm-sound");
       const finalSound = document.getElementById("final-sound");
@@ -100,11 +100,11 @@
         timeLeft--;
         countdownEl.textContent = timeLeft;
 
-        if (timeLeft === 10) {
+        if (timeLeft === 2) {
           alarmSound.play();
         }
 
-        if (timeLeft === 5 && navigator.vibrate) {
+        if (timeLeft === 1 && navigator.vibrate) {
           navigator.vibrate([500, 200, 500]);
         }
 
